@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import { Toolbar, Typography, Button, Box, Paper } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
@@ -6,34 +6,79 @@ function Navbar() {
   const location = useLocation();
 
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <NotificationsIcon sx={{ mr: 1 }} />
-        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold" }}>
-          Campus Notifications
-        </Typography>
-        <Box>
+    <Box
+      sx={{
+        position: "fixed",
+        top: 16,
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 1000,
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          backgroundColor: "#fff",
+          border: "1.5px solid #1a1a1a",
+          borderRadius: "50px",
+          px: 3,
+          py: 0.5,
+          minWidth: "500px",
+        }}
+      >
+        {/* Logo */}
+        <Box display="flex" alignItems="center" gap={1}>
+          <NotificationsIcon sx={{ color: "#1a1a1a", fontSize: "1.2rem" }} />
+          <Typography variant="subtitle1" sx={{ fontWeight: "bold", color: "#1a1a1a" }}>
+            Campus Notifications
+          </Typography>
+        </Box>
+
+        {/* Nav Buttons */}
+        <Box display="flex" gap={1}>
           <Button
-            color="inherit"
             component={Link}
             to="/"
-            sx={{ fontWeight: location.pathname === "/" ? "bold" : "normal" }}
+            size="small"
+            sx={{
+              borderRadius: "50px",
+              textTransform: "none",
+              fontWeight: "bold",
+              px: 2,
+              backgroundColor: location.pathname === "/" ? "#1a1a1a" : "transparent",
+              color: location.pathname === "/" ? "#fff" : "#1a1a1a",
+              "&:hover": {
+                backgroundColor: location.pathname === "/" ? "#333" : "#f0f0f0",
+              },
+            }}
           >
             All
           </Button>
           <Button
-            color="inherit"
             component={Link}
             to="/priority"
-            sx={{ fontWeight: location.pathname === "/priority" ? "bold" : "normal" }}
+            size="small"
+            sx={{
+              borderRadius: "50px",
+              textTransform: "none",
+              fontWeight: "bold",
+              px: 2,
+              backgroundColor: location.pathname === "/priority" ? "#1a1a1a" : "transparent",
+              color: location.pathname === "/priority" ? "#fff" : "#1a1a1a",
+              "&:hover": {
+                backgroundColor: location.pathname === "/priority" ? "#333" : "#f0f0f0",
+              },
+            }}
           >
             Priority Inbox
           </Button>
         </Box>
-      </Toolbar>
-    </AppBar>
+      </Paper>
+    </Box>
   );
 }
 
 export default Navbar;
-

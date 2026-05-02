@@ -67,7 +67,7 @@ function AllNotifications() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Container maxWidth="md" sx={{ py: 4, pt: 14 }}>
       <Typography variant="h4" fontWeight="bold" mb={3}>
         All Notifications
       </Typography>
